@@ -5,6 +5,10 @@
 const char* msq_get_file_content(const char* file_path)
 {
   FILE* file = fopen(file_path, "r");
+  if(file == NULL){
+    fprintf(stderr, "File %s not found", file_path);
+    exit(1);
+  }
   fseek(file, 0, SEEK_END);
   long file_size = ftell(file);
   fseek(file, 0, SEEK_SET);

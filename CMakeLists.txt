@@ -6,7 +6,8 @@ add_executable( game_engine
   main.c
   shader.c
   file_utility.c
-  model.c              
+  model.c
+  engine.c
 )
 
 #required by glfw
