@@ -1,0 +1,3 @@
+[submodule "msqglm"]
+	path = msqglm
+	url = https://github.com/musique88/msqglm
