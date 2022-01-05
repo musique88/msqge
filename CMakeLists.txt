@@ -8,6 +8,9 @@ add_executable( game_engine
   file_utility.c
   model.c
   engine.c
+  msqglm/vec.c
+  msqglm/mat.c
+  msqutils/msq.c
 )
 
 #required by glfw
@@ -22,6 +25,9 @@ target_link_libraries(game_engine GLEW GL m)
 #include_directories(${GLEW_INCLUDE_DIRS})
 #link_libraries(${GLEW_LIBRARIES})
 
+link_directories(${CMAKE_SOURCE_DIR}/msqglm)
+link_directories(${CMAKE_SOURCE_DIR}/msqutils)
+link_directories(${CMAKE_SOURCE_DIR}/stb)
 
 add_custom_command(TARGET game_engine PRE_BUILD
   COMMAND ${CMAKE_COMMAND} -E create_symlink

@@ -5,30 +5,24 @@
 #include "file_utility.h"
 #include "model.h"
 #include <stdlib.h>
+#include "msqglm/vec.h"
 
 struct data_struct{
 	struct msqge_model model;
 	shader_program shader_program;
 };
+
 void init(struct msqge_engine* engine)
 {
-	
-	unsigned int indices[] = {
-		0, 1, 2,
-		2, 1, 3
-	};
-
-	float vertices[] = {
-		-0.5f, -0.5f, 0.f,
-		0.5f, -0.5f, 0.f,
-		-0.5f, 0.5f, 0.f,
-		0.5f, 0.5f, 0.f
-	};
-
-	engine->data = malloc(sizeof(struct data_struct));
+	unsigned int *indices;
+    msqglm_vec3 *vertices;
+    unsigned int indices_size;
+    unsigned int vertices_size;
+    msqge_parse_obj("res/default_cube.obj", &vertices, &vertices_size, &indices, &indices_size);
+    engine->data = malloc(sizeof(struct data_struct));
 	struct data_struct* data = (struct data_struct*)engine->data; 
 	data->shader_program = msqge_shader_create("res/shader.vs", "res/shader.fs");
-	data->model = msqge_init_model(vertices, 12, indices, 6);
+	data->model = msqge_init_model((float*)vertices, vertices_size * 3, indices, indices_size);
 }
 
 void draw(struct msqge_engine* engine)

@@ -1,3 +1,9 @@
 [submodule "msqglm"]
 	path = msqglm
 	url = https://github.com/musique88/msqglm
+[submodule "msqutils"]
+	path = msqutils
+	url = git@github.com:musique88/msqutils.git
+[submodule "stb"]
+	path = stb
+	url = git@github.com:nothings/stb.git
